@@ -2,15 +2,19 @@
   "name": "async_chat",
   "version": "1.0.0",
   "description": "simple node.js async chat",
-  "main": "src/index.js",
+  "main": "app/index.js",
   "repository": "git@github.com:crusadergo/async_chat.git",
   "author": "Ilya Lazarev <crusadergo@yandex.ru>",
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.1",
+    "slm": "^2.0.0"
   },
   "scripts": {
-    "start": "node src/index.js"
+    "start": "nodemon app/index.js",
+    "scss": "node-sass -watch scss -o css"
   }
 }
