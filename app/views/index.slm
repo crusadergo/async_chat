@@ -3,4 +3,46 @@ html
   head
     link rel='stylesheet' type='text/css' href='css/index.css'
 
-.app hello there!
+#messages
+
+form action='' name='publish'
+    input type="text" name='author' id='author'
+    input type="text" name='message' id='message'
+    input type="submit" value='Nor' id='send'
+
+javascript:
+  const socket = new WebSocket('ws://localhost:8081')
+
+  document.forms.publish.onsubmit = function() {
+    const author = document.getElementById('author').value
+
+    var outgoingMessage = {
+      message: this.message.value,
+      author: author
+    }
+
+    socket.send(JSON.stringify(outgoingMessage));
+
+    clearMessageInput();
+
+    return false;
+  };
+
+  socket.onmessage = function(event) {
+    const incomingMessage = event.data;
+    showMessage(incomingMessage);
+  };
+
+  function showMessage(outgoingMessage) {
+    const messageElem = document.createElement('div')
+    const parsed_data = JSON.parse(outgoingMessage)
+
+    messageElem.appendChild(document.createTextNode(parsed_data.author + ': ' + parsed_data.message))
+    document.getElementById('messages').appendChild(messageElem)
+
+    var input = document.getElementById('message');
+  }
+
+  function clearMessageInput() {
+    document.getElementById("message").value = '';
+  }
