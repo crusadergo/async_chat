@@ -22,6 +22,9 @@ javascript:
     }
 
     socket.send(JSON.stringify(outgoingMessage));
+
+    clearMessageInput();
+
     return false;
   };
 
@@ -40,3 +43,6 @@ javascript:
     var input = document.getElementById('message');
   }
 
+  function clearMessageInput() {
+    document.getElementById("message").value = '';
+  }
