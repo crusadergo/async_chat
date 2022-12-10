@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.1",
     "slm": "^2.0.0",
